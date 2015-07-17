@@ -6,7 +6,6 @@
 <title>gsi-anno</title>
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-1.0.0-b1/leaflet.css" />
 <script src="http://cdn.leafletjs.com/leaflet-1.0.0-b1/leaflet.js"></script>
-
 <style>
 body {
 	width: 100%;
@@ -20,12 +19,17 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	margin:;
+	margin: 0;
 	padding: 0;
 }
 
 .leaflet-tile-anno {
 	position: absolute;
+	width: auto;
+	height: auto;
+}
+
+.myclass {
 	white-space: nowrap;
 	font-size: 10pt;
 	font-family: Meiryo, sans-serif;
@@ -34,7 +38,7 @@ body {
 	color: white;
 }
 
-.leaflet-tile-anno:hover {
+.myclass:hover {
 	text-shadow: 0px 0px 12px #0f7, 0px 0px 6px #0f7, 0px 0px 3px #0f7;
 }
 </style>
@@ -43,10 +47,19 @@ body {
 	<div id="map"></div>
 	<script>
 		L.AnnoLayer = L.GridLayer.extend({
+			options : {
+				pane : 'overlayPane',
+				onEachFeature : function(feature) {
+					return null;
+				}
+			},
+			initialize : function(url, options) {
+				this._url = url;
+				L.setOptions(this, options);
+			},
 			createTile : function(coords, done) {
 				var tile = document.createElement('div');
-				var url = "http://cyberjapandata.gsi.go.jp/xyz/experimental_anno/"
-						+ [ coords.z, coords.x, coords.y ].join("/") + ".geojson";
+				var url = L.Util.template(this._url, coords);
 				var that = this;
 				var x = new XMLHttpRequest();
 				x.open("GET", url, true);
@@ -54,49 +67,61 @@ body {
 					if (done)
 						done(null, tile);
 					if (x.readyState == 4 && x.status == 200)
-						that._onLoadJSON(JSON.parse(x.responseText), tile);
+						that._onLoadJSON(JSON.parse(x.responseText), tile, coords);
 				};
 				x.send();
 				return tile;
 			},
-			_onLoadJSON : function(json, tile) {
+			_onLoadJSON : function(json, tile, coords) {
 				if (!json || !json.features)
 					return;
+				var opt = this.options;
 				var map = this._map;
-				json.features.forEach(function(v, i) {
-					if (v.properties.annoCtg != "居住地名（町字名）")
+				json.features.forEach(function(feature) {
+					var node = opt.onEachFeature(feature);
+					if (!node)
 						return;
-					var lng = v.geometry.coordinates[0];
-					var lat = v.geometry.coordinates[1];
-					var knj = v.properties.knj;
-					var kana = v.properties.kana;
+					var p1 = L.GeoJSON.coordsToLatLng(feature.geometry.coordinates);
+					var p2 = map.project(p1, coords.z);
+					var p3 = L.point(p2.x % opt.tileSize, p2.y % opt.tileSize);
 					var div = L.DomUtil.create('div', 'leaflet-tile-anno', tile);
-					div.appendChild(document.createTextNode(knj));
-					div.setAttribute("title", "" + kana);
-					var xy = map.project(L.latLng(lat, lng), 15);
-					L.DomUtil.setPosition(div, L.point(xy.x % 256, xy.y % 256));
+					div.appendChild(node);
+					L.DomUtil.setPosition(div, p3);
 				});
 			}
 		});
 
 		var map = L.map("map", {
 			zoom : 15,
-			center : [ 35.670685, 139.785233 ]
+			center : [ 35.670685, 139.785233 ],
+			inertia : true,
+			inertiaDeceleration : 500,
+			inertiaMaxSpeed : 6000
 		});
 
 		L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/ort/{z}/{x}/{y}.jpg', {
 			attribution : "<a href='http://maps.gsi.go.jp/development/'>地理院タイル・オルソ画像(国土地理院)</a>",
-			maxZoom : 15,
-			minZoom : 15
+			minZoom : 13,
+			maxZoom : 17
 		}).addTo(map);
 
-		(new L.AnnoLayer({
+		(new L.AnnoLayer('http://cyberjapandata.gsi.go.jp/xyz/experimental_anno/{z}/{x}/{y}.geojson', {
 			attribution : "<a href='https://github.com/gsi-cyberjapan/experimental_anno'>"
 					+ "国土地理院ベクトルタイル提供実験（地図情報（注記））</a>",
+			minZoom : 15,
 			maxZoom : 15,
-			minZoom : 15
+			onEachFeature : function(feature) {
+				if (feature.properties.annoCtg != "居住地名（町字名）")
+					return null;
+				var knj = feature.properties.knj;
+				var kana = feature.properties.kana;
+				var span = document.createElement('span');
+				span.appendChild(document.createTextNode(knj));
+				span.setAttribute("title", "" + kana);
+				span.setAttribute("class", "myclass");
+				return span;
+			}
 		})).addTo(map);
 	</script>
 </body>
 </html>
-
