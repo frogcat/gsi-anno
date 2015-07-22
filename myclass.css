@@ -1,0 +1,306 @@
+@CHARSET "UTF-8";
+
+.myclass {
+	white-space: nowrap;
+	font-size: 13pt;
+	font-family: Meiryo, sans-serif;
+	font-weight: bold;
+	text-shadow: -1px -1px 0px #fff, -1px 1px 0px #fff, 1px -1px 0px #fff,
+		1px 1px 0px #fff;
+	color: black;
+	transform-origin: top center;
+}
+
+.myclass:hover {
+	text-shadow: -1px -1px 0px #ffa500, -1px 1px 0px #ffa500, 1px -1px 0px
+		#ffa500, 1px 1px 0px #ffa500;
+}
+
+.myclass[data-arrng='false'] {
+	transform-origin: left center;
+	-ms-writing-mode: tb-rl;
+	-webkit-writing-mode: vertical-rl;
+	-moz-writing-mode: vertical-rl;
+	-o-writing-mode: vertical-rl;
+	writing-mode: vertical-rl;
+}
+
+.myclass[data-ctg='行政区画（市区町村）'] {
+	font-size: 32.5pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='行政区画（飛び地）'] {
+	font-size: 18.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='居住地名（町字名）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='居住地名（通称）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='山地（山の総称）'] {
+	font-size: 32.5pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='山地（山、岳、峰等）'] {
+	font-size: 20.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='山地（尖峰、丘、塚等）'] {
+	font-size: 15.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='河川、湖沼（湖、沼、池等）'] {
+	font-size: 15.0pt;
+	color: #0000ff;
+}
+
+.myclass[data-ctg='河川、湖沼（河川、用水等）'] {
+	font-size: 15.0pt;
+	color: #0000ff;
+}
+
+.myclass[data-ctg='河川、湖沼（沢、谷、滝等）'] {
+	font-size: 15.0pt;
+	color: #0000ff;
+}
+
+.myclass[data-ctg='陸域自然地名（高原、森等）'] {
+	font-size: 15.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='陸域自然地名（岩、温泉等）'] {
+	font-size: 15.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='海域、海岸地形（海、湾等）'] {
+	font-size: 15.0pt;
+	color: #0000ff;
+}
+
+.myclass[data-ctg='海域、海岸地形（海岸、浜等）'] {
+	font-size: 15.0pt;
+	color: #0000ff;
+}
+
+.myclass[data-ctg='海域、海岸地形（岬、磯等）'] {
+	font-size: 15.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='島（群島、列島等）'] {
+	font-size: 15.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='島（島）'] {
+	font-size: 15.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='島（はえ、岩礁等）'] {
+	font-size: 15.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='陸上交通施設（道路名）'] {
+	font-size: 17.5pt;
+	color: #005a3c;
+}
+
+.myclass[data-ctg='陸上交通施設（道路施設）'] {
+	font-size: 15.0pt;
+	color: #005a3c;
+}
+
+.myclass[data-ctg='陸上交通施設（道路構造物）'] {
+	font-size: 13.8pt;
+	color: #005a3c;
+}
+
+.myclass[data-ctg='陸上交通施設（鉄道路線名）'] {
+	font-size: 20.0pt;
+	color: #005a3c;
+}
+
+.myclass[data-ctg='陸上交通施設（鉄道駅名）'] {
+	font-size: 15.0pt;
+	color: #005a3c;
+}
+
+.myclass[data-ctg='陸上交通施設（鉄道構造物）'] {
+	font-size: 15.0pt;
+	color: #005a3c;
+}
+
+.myclass[data-ctg='海上交通施設（港湾）'] {
+	font-size: 15.0pt;
+	color: #005a3c;
+}
+
+.myclass[data-ctg='海上交通施設（港湾施設）'] {
+	font-size: 15.0pt;
+	color: #005a3c;
+}
+
+.myclass[data-ctg='航空交通施設（空港名）'] {
+	font-size: 15.0pt;
+	color: #005a3c;
+}
+
+.myclass[data-ctg='構造物（高塔、煙突等）'] {
+	font-size: 15.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='構造物（ダム）'] {
+	font-size: 15.0pt;
+	color: #0000ff;
+}
+
+.myclass[data-ctg='構造物（せき）'] {
+	font-size: 15.0pt;
+	color: #0000ff;
+}
+
+.myclass[data-ctg='構造物（水門、堤防）'] {
+	font-size: 15.0pt;
+	color: #0000ff;
+}
+
+.myclass[data-ctg='土地利用（演習場、ゴルフ場等）'] {
+	font-size: 15.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='土地利用（史跡名勝天然記念物）'] {
+	font-size: 15.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='土地利用（漁港）'] {
+	font-size: 15.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='土地利用（公園）'] {
+	font-size: 15.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（合同庁舎）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（国の機関）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（矯正施設）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（自衛隊、米軍）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（県庁）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（大学、大学院）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（短期大学）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（高等専門学校）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（特殊学校）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（水族館、動植物園）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（発電所）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（料金所）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（神社）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（寺院）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（商業施設）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（高層施設）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（文教施設）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='建物（その他）'] {
+	font-size: 13.8pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='その他（ふりがな）'] {
+	font-size: 10.0pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='その他（鉱山の鉱種名）'] {
+	font-size: 11.3pt;
+	color: #000000;
+}
+
+.myclass[data-ctg='その他（その他）'] {
+	font-size: 15.0pt;
+	color: #000000;
+}
