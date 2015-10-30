@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<title>gsi-anno</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat+Brush" />
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.0-beta.2/leaflet.css" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="http://cdn.leafletjs.com/leaflet/v1.0.0-beta.2/leaflet.js"></script>
+<script src="bundle.js"></script>
+<style>
+body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+#map {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.leaflet-tile-anno {
+	position: absolute;
+	width: auto;
+	height: auto;
+	font-size: 28pt;
+	font-weight: bold;
+	font-family: 'Caveat Brush', cursive;
+	text-shadow: 1px 1px 3px #fff, 1px -1px 3px #fff, -1px 1px 3px #fff,
+		-1px -1px 3px #fff,;
+	color: #000;
+	line-height: 28px;
+}
+
+span[data-ctg]:before {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transform: translate(0, 0);
+}
+
+span[data-ctg^='行政区画'] {
+	font-size: 80pt;
+}
+
+span[data-ctg^='行政区画'], span[data-ctg^='居住'] {
+	color: white;
+	text-shadow: 1px 1px 3px #000, 1px -1px 3px #000, -1px 1px 3px #000,
+		-1px -1px 3px #000,;
+}
+
+div[data-zoom='15'] span, div[data-zoom='16'] span {
+	display: none;
+}
+
+div[data-zoom='15'] span[data-ctg^='行政区画'], div[data-zoom='16'] span[data-ctg^='行政区画']
+	{
+	display: block;
+}
+
+div[data-zoom='16'] span[data-ctg^='居住'] {
+	display: block;
+}
+
+span[data-ctg^='陸上交通施設（鉄道']:before {
+	content: "\f238";
+}
+
+span[data-ctg^='陸上交通施設（道路']:before {
+	content: "\f1b9";
+}
+
+span[data-ctg^='建物']:before {
+	content: "\f041";
+}
+
+span[data-ctg^='土地利用']:before {
+	content: "\f041";
+}
+
+span[data-ctg^='構造物']:before {
+	content: "\f05a";
+}
+
+span[data-ctg^='航空交通施設']:before {
+	content: "\f072";
+}
+
+span[data-ctg^='海上交通施設']:before {
+	content: "\f21a";
+}
+</style>
+</head>
+<body>
+	<div id="map"></div>
+</body>
+</html>
+
